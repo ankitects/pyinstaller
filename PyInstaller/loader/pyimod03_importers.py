@@ -151,6 +151,8 @@ class FrozenImporter(object):
             modname = fullname.split('.')[-1]
 
             for p in path:
+                if not p.startswith(SYS_PREFIX):
+                    continue
                 p = p[SYS_PREFIXLEN+1:]
                 parts = p.split(pyi_os_path.os_sep)
                 if not parts: continue
@@ -395,6 +397,8 @@ class FrozenImporter(object):
             modname = fullname.rsplit('.')[-1]
 
             for p in path:
+                if not p.startswith(SYS_PREFIX):
+                    continue
                 p = p[SYS_PREFIXLEN+1:]
                 parts = p.split(pyi_os_path.os_sep)
                 if not parts: continue
